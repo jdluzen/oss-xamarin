@@ -20,7 +20,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
     using ActionBarDrawerToggle = Android.Support.V7.App.ActionBarDrawerToggle;
     using ActionMode = Android.Support.V7.View.ActionMode;
 
-    public abstract class AppCompatFormsActivity : FormsApplicationActivity,
+    public abstract class AppCompatFormsActivity : FormsAppCompatActivity,
                                                    ActionBarDrawerToggle.IDelegateProvider,
                                                    TaskStackBuilder.ISupportParentable,
                                                    IAppCompatCallback,
@@ -169,7 +169,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             builder.AddParentStack(this);
         }
 
-        public override bool OnMenuItemSelected(int featureId, IMenuItem item)
+        /*public new bool OnMenuItemSelected(int featureId, IMenuItem item)
         {
             const int DisplayHomeAsUp = 4;
 
@@ -191,7 +191,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             }
 
             return false;
-        }
+        }*/
 
         public virtual void OnPrepareSupportNavigateUpTaskStack(TaskStackBuilder builder)
         {
