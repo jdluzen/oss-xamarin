@@ -40,7 +40,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers
         [Obsolete("Prefer to use Init.", false)]
         public static void EnableAll()
         {
-            Init();
+            Init(AppCompatOption.All);
         }
 
         /// <summary>
@@ -72,47 +72,52 @@ namespace NativeCode.Mobile.AppCompat.Renderers
 
         public static void Init(AppCompatOption options = AppCompatOption.All)
         {
+            Init(AppCompatOption.None, options);
+        }
+
+        public static void Init(AppCompatOption exclude = AppCompatOption.None, AppCompatOption options = AppCompatOption.All)
+        {
             if (options == AppCompatOption.None)
             {
                 return;
             }
 
-            if (options.HasFlag(AppCompatOption.AppCompatButtonSupport))
+            if (!exclude.HasFlag(AppCompatOption.AppCompatButtonSupport) && options.HasFlag(AppCompatOption.AppCompatButtonSupport))
             {
                 RegisterType(typeof(Button), typeof(AppCompatButtonRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.AppCompatEntrySupport))
+            if (!exclude.HasFlag(AppCompatOption.AppCompatEntrySupport) && options.HasFlag(AppCompatOption.AppCompatEntrySupport))
             {
                 RegisterType(typeof(Entry), typeof(AppCompatEntryLayoutRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.AppCompatMasterDetailSupport))
+            if (!exclude.HasFlag(AppCompatOption.AppCompatMasterDetailSupport) && options.HasFlag(AppCompatOption.AppCompatMasterDetailSupport))
             {
                 RegisterType(typeof(MasterDetailPage), typeof(AppCompatMasterDetailRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.AppCompatSpinnerSupport))
+            if (!exclude.HasFlag(AppCompatOption.AppCompatSpinnerSupport) && options.HasFlag(AppCompatOption.AppCompatSpinnerSupport))
             {
                 RegisterType(typeof(Picker), typeof(AppCompatSpinnerRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.AppCompatSwitchSupport))
+            if (!exclude.HasFlag(AppCompatOption.AppCompatSwitchSupport) && options.HasFlag(AppCompatOption.AppCompatSwitchSupport))
             {
                 RegisterType(typeof(Switch), typeof(AppCompatSwitchRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.CardViewSupport))
+            if (!exclude.HasFlag(AppCompatOption.CardViewSupport) && options.HasFlag(AppCompatOption.CardViewSupport))
             {
                 RegisterType(typeof(Card), typeof(CardRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.FloatingActionButtonSupport))
+            if (!exclude.HasFlag(AppCompatOption.FloatingActionButtonSupport) && options.HasFlag(AppCompatOption.FloatingActionButtonSupport))
             {
                 RegisterType(typeof(FloatingButton), typeof(FloatingButtonRenderer));
             }
 
-            if (options.HasFlag(AppCompatOption.NavigationLayoutSupport))
+            if (!exclude.HasFlag(AppCompatOption.NavigationLayoutSupport) && options.HasFlag(AppCompatOption.NavigationLayoutSupport))
             {
                 RegisterType(typeof(NavigationLayout), typeof(NavigationLayoutRenderer));
             }

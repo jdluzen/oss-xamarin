@@ -105,9 +105,9 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 
         protected virtual void UpdateIcon()
         {
-            if (this.FloatingButton.Icon != null)
+            if (FloatingButton.Icon != null && FloatingButton.Icon is ImageSource)
             {
-                this.Control.SetImageDrawable(this.FloatingButton.Icon.ToBitmapDrawable());
+                this.Control.SetImageDrawable(((ImageSource)this.FloatingButton.Icon).ToBitmapDrawable());
             }
         }
 

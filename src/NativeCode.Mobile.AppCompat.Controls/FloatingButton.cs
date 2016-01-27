@@ -24,7 +24,7 @@
             x => x.CommandParameter,
             default(object));
 
-        public static readonly BindableProperty IconProperty = BindableProperty.Create<FloatingButton, ImageSource>(x => x.Icon, default(ImageSource));
+        public static readonly BindableProperty IconProperty = BindableProperty.Create<FloatingButton, object>(x => x.Icon, default(object));
 
         /// <summary>
         /// Gets or sets the size of the button.
@@ -71,9 +71,9 @@
         /// <summary>
         /// Gets or sets the icon.
         /// </summary>
-        public ImageSource Icon
+        public object Icon
         {
-            get { return (ImageSource)this.GetValue(IconProperty); }
+            get { return this.GetValue(IconProperty); }
             set { this.SetValue(IconProperty, value); }
         }
     }
