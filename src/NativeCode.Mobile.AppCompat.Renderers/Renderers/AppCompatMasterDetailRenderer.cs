@@ -1,19 +1,14 @@
 namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 {
-    using System.ComponentModel;
-
     using Android.App;
     using Android.Support.V4.Widget;
     using Android.Support.V7.App;
-
     using NativeCode.Mobile.AppCompat.Extensions;
-
+    using System.ComponentModel;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
-
     using ActionBar = Android.Support.V7.App.ActionBar;
     using PropertyChangingEventArgs = Xamarin.Forms.PropertyChangingEventArgs;
-    using RendererResource = Resource;
     using View = Android.Views.View;
 
     public class AppCompatMasterDetailRenderer : MasterDetailRenderer

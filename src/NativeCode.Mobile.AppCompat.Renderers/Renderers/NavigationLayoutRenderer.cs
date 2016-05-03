@@ -46,7 +46,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 
             if (this.Control == null)
             {
-                var context = this.Context.GetAppCompatThemedContext();
+                var context = this.Context;//.GetAppCompatThemedContext();
                 var control = new NavigationView(context);
                 control.SetFitsSystemWindows(true);
                 control.SetNavigationItemSelectedListener(this);
@@ -76,38 +76,14 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
             {
                 return;
             }
-            // TODO: It's adding it, but it never shows up in the XML in monitor.
-            var header = this.Element.HeaderView.GetNativeView();
-            //var h2 = this.Element.HeaderView.ConvertFormsToNative();
-            var temp = Element.HeaderView.Content.GetNativeView();
-            //var hchild = temp as Android.Widget.Button;
-            //Android.Widget.Button b = header as Android.Widget.Button;
-            //var c0 = header.GetChildAt(0);
-            //LinearLayoutCompat.LayoutParams lp = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MatchParent, 400);
-            //header.LayoutParameters = new LayoutParams(lp);
-            /*if (Control.ChildCount > 0)
-                Control.GetChildAt(0).Invalidate();
-            else*/
-            LinearLayout llc = new LinearLayout(Forms.Context) { LayoutParameters = new LayoutParams(LinearLayoutCompat.LayoutParams.MatchParent, 400) };
-            //var llc0 = llc.GetChildAt(0);
-            //ImageView iv = new ImageView(Forms.Context);
-            //iv.SetImageResource(AppCompat.Resource.Drawable.abc_btn_check_material);
-            //AppCompatButton acb = new AppCompatButton(Forms.Context) { Text = "hi" };
-            //llc.AddView(acb);
-            //llc.AddView(header);
-            //llc.AddView(iv);
-            //View root = header.RootView;
-            temp.RemoveFromParent();//keep
-            llc.AddView(temp);//keep
-            //root.ForceLayout();
-            //root.LayoutParameters = new LinearLayout.LayoutParams(LinearLayoutCompat.LayoutParams.MatchParent, LinearLayoutCompat.LayoutParams.WrapContent);
-            //root.SetMinimumHeight(400);
-            //root.SetMinimumWidth(400);
-            //Element.ForceLayout();
-            //header.SetMinimumHeight(800);
-            this.Control.AddHeaderView(/*header);//root);//llc);// header);/*/llc);
-            //((IVisualElementController)Element).NativeSizeChanged();
-            //header.Layout(header.Parent);
+            var androidView = Element.HeaderView.Content.GetNativeView();
+            LinearLayout llc = new LinearLayout(Forms.Context)
+            {
+                LayoutParameters = new LayoutParams(LinearLayoutCompat.LayoutParams.MatchParent, (int)Element.HeightRequest)
+            };
+            androidView.RemoveFromParent();
+            llc.AddView(androidView);
+            this.Control.AddHeaderView(llc);
         }
 
         private void UpdateMenuItems()

@@ -1,18 +1,19 @@
 namespace NativeCode.Mobile.AppCompat.FormsAppCompat
 {
     using Android.Support.Design.Widget;
-    using Android.Support.V7.App;
     using Android.Views;
     using Android.Widget;
-
+    using Helpers;
+    using Xamarin.Forms.Platform.Android;
     /// <summary>
     /// Provides a <see cref="AppCompatDelegate" />-backed activity while maintaining compatibility with $Xamarin.Forms$.
     /// </summary>
     /// <remarks>See <see cref="http://bit.ly/1Lfr30c" /> for information on implementation.</remarks>
-    public class AppCompatFormsApplicationActivity : AppCompatFormsActivity, IAppCompatCoordinatorLayoutProvider
+    public class AppCompatFormsApplicationActivity : FormsAppCompatActivity, IAppCompatCoordinatorLayoutProvider
     {
         private CoordinatorLayout coordinator;
-
+        private readonly DisposableContainer disposables = new DisposableContainer();
+        public static int CoordinatorResource = 0;
         protected bool EnableCoordinatorLayout { get; set; }
 
         public CoordinatorLayout GetCoordinatorLayout()
@@ -27,28 +28,19 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             // We need to create a CoordinatorLayout for Snackbars to find so we get the proper display.
             // This simply wraps the LinearLayout that the FormsApplicationActivity creates.
             // TODO: This relies too much on the implementation detail of the FormsApplicationActivity.
-            if (/*content is LinearLayout && */this.EnableCoordinatorLayout)
+            if (content is RelativeLayout && this.EnableCoordinatorLayout && CoordinatorResource > 0)
             {
-                this.coordinator = this.Inflate<CoordinatorLayout>(Resource.Layout.appcompat_coordinator, null);
-                this.coordinator.AddView(this.Toolbar);
+                this.coordinator = this.Inflate<CoordinatorLayout>(CoordinatorResource, null);
+                var toolbar = this.Inflate<Android.Support.V7.Widget.Toolbar>(FormsAppCompatActivity.ToolbarResource, null);
+                this.coordinator.AddView(toolbar);
                 this.coordinator.AddView(view);
 
-                this.Disposables.Add(this.coordinator);
+                this.disposables.Add(this.coordinator);
 
                 content = this.coordinator;
             }
 
-            this.AppCompatDelegate.SetContentView(content);
-        }
-
-        public override void SetContentView(View view, ViewGroup.LayoutParams @params)
-        {
-            this.AppCompatDelegate.SetContentView(view, @params);
-        }
-
-        public override void SetContentView(int layoutResId)
-        {
-            this.AppCompatDelegate.SetContentView(layoutResId);
+            base.SetContentView(content);
         }
 
         protected override void Dispose(bool disposing)
@@ -56,6 +48,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             if (disposing)
             {
                 this.coordinator = null;
+                this.disposables.Dispose();
             }
 
             base.Dispose(disposing);
