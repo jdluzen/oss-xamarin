@@ -77,7 +77,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
         /// <summary>
         /// Gets the drawer toggle delegate.
         /// </summary>
-        public virtual ActionBarDrawerToggle.IDelegate DrawerToggleDelegate
+        public override ActionBarDrawerToggle.IDelegate DrawerToggleDelegate
         {
             get { return this.AppCompatDelegate.DrawerToggleDelegate; }
         }
@@ -108,7 +108,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
         /// <summary>
         /// Gets the support parent activity intent.
         /// </summary>
-        public virtual Intent SupportParentActivityIntent
+        public override Intent SupportParentActivityIntent
         {
             get { return NavUtils.GetParentActivityIntent(this); }
         }
@@ -164,7 +164,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             this.AppCompatDelegate.OnConfigurationChanged(newConfig);
         }
 
-        public virtual void OnCreateSupportNavigateUpTaskStack(TaskStackBuilder builder)
+        public override void OnCreateSupportNavigateUpTaskStack(TaskStackBuilder builder)
         {
             builder.AddParentStack(this);
         }
@@ -193,19 +193,19 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             return false;
         }*/
 
-        public virtual void OnPrepareSupportNavigateUpTaskStack(TaskStackBuilder builder)
+        public override void OnPrepareSupportNavigateUpTaskStack(TaskStackBuilder builder)
         {
         }
 
-        public virtual void OnSupportActionModeFinished(ActionMode mode)
+        public override void OnSupportActionModeFinished(ActionMode mode)
         {
         }
 
-        public virtual void OnSupportActionModeStarted(ActionMode mode)
+        public override void OnSupportActionModeStarted(ActionMode mode)
         {
         }
 
-        public virtual bool OnSupportNavigateUp()
+        public override bool OnSupportNavigateUp()
         {
             var parent = this.SupportParentActivityIntent;
 
@@ -242,7 +242,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             return false;
         }
 
-        public virtual ActionMode OnWindowStartingSupportActionMode(ActionMode.ICallback callback)
+        public override ActionMode OnWindowStartingSupportActionMode(ActionMode.ICallback callback)
         {
             return this.AppCompatDelegate.StartSupportActionMode(callback);
         }
@@ -262,12 +262,12 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             this.AppCompatDelegate.SetContentView(layoutResId);
         }
 
-        public virtual void SupportNavigateUpTo(Intent intent)
+        public override void SupportNavigateUpTo(Intent intent)
         {
             NavUtils.NavigateUpTo(this, intent);
         }
 
-        public virtual bool SupportShouldUpRecreateTask(Intent targetIntent)
+        public override bool SupportShouldUpRecreateTask(Intent targetIntent)
         {
             return NavUtils.ShouldUpRecreateTask(this, targetIntent);
         }

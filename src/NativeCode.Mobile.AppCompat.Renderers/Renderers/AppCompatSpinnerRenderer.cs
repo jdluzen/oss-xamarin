@@ -32,7 +32,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 
             if (this.Control == null)
             {
-                var control = this.InflateNativeControl<AppCompatSpinner>(Resource.Layout.spinner);
+                var control = this.InflateNativeControl<AppCompatSpinner>(AppCompat.Renderers.Resource.Layout.spinner);
                 control.Adapter = this.Adapter = new ArrayAdapter<object>(this.Context, Android.Resource.Layout.SimpleListItemActivated1);
                 control.Clickable = true;
                 control.OnItemSelectedListener = this;

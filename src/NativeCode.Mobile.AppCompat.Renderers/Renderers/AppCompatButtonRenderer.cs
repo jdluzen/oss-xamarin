@@ -1,3 +1,5 @@
+using Xamarin.Forms.Platform.Android;
+
 namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 {
     using System;
@@ -8,7 +10,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
     using NativeCode.Mobile.AppCompat.Renderers.Extensions;
 
     using Xamarin.Forms;
-    using Xamarin.Forms.Platform.Android;
+    using Xamarin.Forms.Platform.Android.AppCompat;
 
     using JavaObject = Java.Lang.Object;
     using View = Android.Views.View;
@@ -43,7 +45,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
         {
             private static readonly Lazy<ButtonClickListener> DefaultInstance = new Lazy<ButtonClickListener>(() => new ButtonClickListener());
 
-            public static ButtonClickListener Instance 
+            public static ButtonClickListener Instance
             { get { return DefaultInstance.Value; } }
 
             public void OnClick(View view)

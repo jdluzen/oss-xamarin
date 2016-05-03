@@ -1,11 +1,9 @@
 namespace NativeCode.Mobile.AppCompat.Extensions
 {
-    using System;
-
     using Android.Content;
     using Android.Support.V7.App;
-
     using NativeCode.Mobile.AppCompat.FormsAppCompat;
+    using System;
 
     /// <summary>
     /// Provides extensions for <see cref="Context" /> instances.

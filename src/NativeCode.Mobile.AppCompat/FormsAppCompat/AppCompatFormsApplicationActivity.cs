@@ -27,7 +27,7 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat
             // We need to create a CoordinatorLayout for Snackbars to find so we get the proper display.
             // This simply wraps the LinearLayout that the FormsApplicationActivity creates.
             // TODO: This relies too much on the implementation detail of the FormsApplicationActivity.
-            if (content is LinearLayout && this.EnableCoordinatorLayout)
+            if (/*content is LinearLayout && */this.EnableCoordinatorLayout)
             {
                 this.coordinator = this.Inflate<CoordinatorLayout>(Resource.Layout.appcompat_coordinator, null);
                 this.coordinator.AddView(this.Toolbar);

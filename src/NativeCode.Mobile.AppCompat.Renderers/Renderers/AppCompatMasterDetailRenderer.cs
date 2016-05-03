@@ -146,7 +146,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
             private readonly AppCompatMasterDetailRenderer owner;
 
             public CustomActionBarDrawerToggle(AppCompatMasterDetailRenderer owner, Activity activity, DrawerLayout drawerLayout)
-                : base(activity, drawerLayout, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close)
+                : base(activity, drawerLayout, AppCompat.Renderers.Resource.String.navigation_drawer_open, AppCompat.Renderers.Resource.String.navigation_drawer_close)
             {
                 this.appCompatDelegate = activity.GetAppCompatDelegate();
                 this.owner = owner;

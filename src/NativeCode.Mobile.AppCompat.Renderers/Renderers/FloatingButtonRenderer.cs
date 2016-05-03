@@ -113,7 +113,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 
         private FloatingActionButton CreateFloatingActionButton()
         {
-            var id = this.FloatingButton.ButtonSize == FloatingButtonSize.Mini ? Resource.Layout.fab_mini : Resource.Layout.fab_normal;
+            var id = this.FloatingButton.ButtonSize == FloatingButtonSize.Mini ? AppCompat.Renderers.Resource.Layout.fab_mini : AppCompat.Renderers.Resource.Layout.fab_normal;
             var inflated = this.Activity.LayoutInflater.Inflate(id, this, false);
 
             return inflated.FindViewById<FloatingActionButton>(inflated.Id);

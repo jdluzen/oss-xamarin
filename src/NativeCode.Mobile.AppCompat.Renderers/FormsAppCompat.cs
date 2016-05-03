@@ -1,15 +1,12 @@
 namespace NativeCode.Mobile.AppCompat.Renderers
 {
-    using System;
-    using System.Diagnostics;
-    using System.Reflection;
-
     using NativeCode.Mobile.AppCompat.Controls;
     using NativeCode.Mobile.AppCompat.Helpers;
     using NativeCode.Mobile.AppCompat.Renderers.Renderers;
-
+    using System;
+    using System.Diagnostics;
+    using System.Reflection;
     using Xamarin.Forms;
-
     using Switch = Xamarin.Forms.Switch;
 
     /// <summary>

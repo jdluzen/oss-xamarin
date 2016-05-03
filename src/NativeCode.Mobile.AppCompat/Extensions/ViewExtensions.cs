@@ -49,8 +49,15 @@ namespace NativeCode.Mobile.AppCompat.Extensions
 
             if (renderer == null)
             {
-                renderer = RendererFactory.GetRenderer(element);
-                element.SetValue(RendererProperty, renderer);
+                //RendererFactory.GetRenderer(element);
+                renderer = Platform.GetRenderer(element);
+                if (renderer == null)
+                {
+                    renderer = Platform.CreateRenderer(element);
+                    //renderer.SetElement(element);
+                    Platform.SetRenderer(element, renderer);
+                }
+                //element.SetValue(RendererProperty, renderer);
             }
 
             return renderer;
