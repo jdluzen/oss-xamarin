@@ -2,16 +2,11 @@ using Xamarin.Forms.Platform.Android;
 
 namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
 {
-    using System;
-
     using Android.Support.V7.Widget;
-
-    using NativeCode.Mobile.AppCompat.Extensions;
     using NativeCode.Mobile.AppCompat.Renderers.Extensions;
-
+    using System;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android.AppCompat;
-
     using JavaObject = Java.Lang.Object;
     using View = Android.Views.View;
 
@@ -28,7 +23,7 @@ namespace NativeCode.Mobile.AppCompat.Renderers.Renderers
             // in the base method.
             if (this.Control == null)
             {
-                var context = this.Context.GetAppCompatThemedContext();
+                var context = this.Context;//.GetAppCompatThemedContext();
                 var control = new AppCompatButton(context);
                 this.SetNativeControl(control);
 
