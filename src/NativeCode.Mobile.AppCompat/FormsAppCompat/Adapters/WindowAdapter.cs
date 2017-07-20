@@ -267,5 +267,15 @@ namespace NativeCode.Mobile.AppCompat.FormsAppCompat.Adapters
         {
             this.Window.MakeActive();
         }
+
+        public override void SetDecorCaptionShade(DecorCaptionShade decorCaptionShade)
+        {
+            this.Window.SetDecorCaptionShade(decorCaptionShade);
+        }
+
+        public override void SetResizingCaptionDrawable(Drawable drawable)
+        {
+            this.Window.SetResizingCaptionDrawable(drawable);
+        }
     }
 }
